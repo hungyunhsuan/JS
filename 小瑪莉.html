@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <style>
+     .row{
+         margin-bottom:20px;
+     }
+
+     .img{
+         border: none;
+         transition:all .3s;
+         width: 100px;
+         height:100px;
+     }
+
+     .active{
+         border: 10px solid #FF3333;
+         transition: all 0s;
+         width: 100px;
+         height:100px;
+     }
+     #btn{
+         width: 150px;
+         height: 100px;
+     }
+
+
+    </style>
+
+    <div class="container-fluid">
+        <div class="row mt-5  ">
+            <div class="col-xs ml-5">
+                <img id="i1" src='i1.jpg'  class="img" alt=''/> 
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i2" src="i2.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i3" src="i3.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i4" src="i4.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i5" src="i5.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i6" src="i6.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i7" src="i7.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i8" src="i8.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i9" src="i9.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i10" src="i10.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i11" src="i11.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i12" src="i12.jpg" class="img" alt="">
+            </div>
+          
+        </div>
+        <div class="row ">
+            <div class="col-xs ml-5 mt-5">
+                <img id="i30" src="i13.jpg" class="img" alt="">
+            </div>
+            <div class="offset-9">
+                
+            </div>
+            <div class="col-xs mr-5 mt-5">
+                <img id="i13" src="i14.jpg" class="img" alt="">
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-xs ml-5 mt-5">
+                <img id="i29" src="i15.jpg" class="img" alt="">
+            </div>
+            <div class="offset-9 " >
+                   
+            </div>
+            <div class="col-xs mr-5 mt-5">
+                <img id="i14" src="i16.jpg" class="img" alt="">
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-xs ml-5 mt-5">
+                <img id="i28" src="i17.jpg" class="img" alt="">
+            </div>
+            <div class="offset-9">
+                
+            </div>
+            <div class="col-xs mr-5 mt-5">
+                <img id="i15" src="i18.jpg" class="img" alt="">
+            </div>
+        </div>
+
+        <div class="row mt-5 ">
+            <div class="col-xs ml-5">
+                <img id="i27" src='i19.jpg'  class="img" alt=''/> 
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i26" src="i20.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i25" src="i21.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i24" src="i22.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i23" src="i23.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i22" src="i24.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i21" src="i25.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i20" src="i26.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i19" src="i27.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i18" src="i28.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i17" src="i29.jpg" class="img" alt="">
+            </div>
+            <div class="col-xs ml-5">
+                <img id="i16" src="i30.jpg" class="img" alt="">
+            </div>
+          
+        </div>
+        <div class="row mt-5 ml-5">
+            <div class="col">
+                    <button type="button" class="btn btn-primary" id="btn"><h2>start</h2></button> 
+            </div>
+        </div>
+      </div>
+
+      <script>
+          var img=[];
+          var forward=0;
+          var curr=0;
+
+          function go() {
+            var n = 0;
+
+            while (true) {
+                n++;
+                var imgs = document.getElementById("i" + n);
+
+                if (!imgs) {
+                    break;
+                }
+
+               imgs.src = imgs.id+".jpg" ;
+                img.push(imgs);
+            }
+
+            document.getElementById("btn").onclick = function () {
+                forward = (img.length*6);
+                forward += Math.floor(Math.random() * img.length);
+                time();
+            }    
+        }
+
+        
+
+         function time() {
+            img[curr].className = "img";
+
+            curr++;
+
+            if (curr >= img.length) {
+                curr = 0;
+            }
+
+            img[curr].className = "active";
+
+            if (--forward > 90) {
+                setTimeout(time, 60);
+            }
+            else if (--forward > 50) {
+                setTimeout(time, 30);
+            }
+           else if (--forward > 0) {
+                setTimeout(time, 10);
+            } 
+        }
+           
+        go();
+
+       
+
+       
+
+
+
+       
+             
+         
+      </script>
+     
+
+
+
+
+      
+    
+
+  
+  </body>
+</html>

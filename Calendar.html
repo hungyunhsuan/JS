@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>行事曆</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
+
+    <style>
+        .body-list ul {
+            width: 100%;
+            font-family: arial;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .body-list ul .green {
+            width: 14.28%;
+            height: 100px;
+            line-height: 20px;
+            list-style-type: none;
+            display: block;
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        .body-list ul .darkgrey {
+            width: 14.28%;
+            height: 100px;
+            line-height: 20px;
+            list-style-type: none;
+            display: block;
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        .body-list ul .lightgrey {
+            width: 14.28%;
+            height: 100px;
+            line-height: 20px;
+            list-style-type: none;
+            display: block;
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        #dayofweek li {
+            color: #FF3333;
+            width: 14.28%;
+            height: 100px;
+            font-size: 16pt;
+            float: left;
+            list-style-type: none;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        .green {
+            color: #5599FF;
+        }
+
+        .lightgrey {
+            color: #a8a8a8;
+
+        }
+
+        .darkgrey {
+            color: #565656;
+
+        }
+
+        .greenbox {
+            border: 1px solid #6ac13c;
+            background: #CCEEFF;
+
+        }
+
+        .mapstyle {
+            width: 100%;
+            height: 500px;
+        }
+
+        .d li {
+            font-weight: bold;
+            color: black;
+            text-align: left;
+            margin-bottom: 8px;
+            font-size: 11pt;
+
+        }
+
+        .d {
+            padding-left: 20px;
+        }
+
+        .d li:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col text-left">
+                <button type="button" class="btn btn-outline-info bg-lg mt-5" id="btnPrev">
+                    <i class="fas fa-angle-double-left"></i>
+                </button>
+            </div>
+
+            <div class="col text-center mt-5">
+                <h3 id="year"> </h3>
+
+            </div>
+
+            <div class="col  text-right">
+                <button type="button" class="btn btn-outline-info bg-lg  mt-5" id="btnNext">
+                    <i class="fas fa-angle-double-right"></i>
+                </button>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col text-right">
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modelId">
+                    新增活動
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-group mb-3">
+                                    <input id="inputyear" style="text-align:center;" type="text" class="form-control" placeholder="year" aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" value="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">年</span>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input id="inputmonth" style="text-align:center;" type="text" class="form-control" placeholder="month" aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" value="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">月</span>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input id="inputdate" style="text-align:center;" type="text" class="form-control" placeholder="date" aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" value="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">日</span>
+                                    </div>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">輸入地址</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="address" aria-describedby="basic-addon3">
+                                </div>
+
+
+                                <form action="/action_page.php">
+                                    選擇顏色
+                                    <input type="color" name="favcolor" value="#ff0000" id="color">
+                                </form>
+
+                                <div class="input-group mb-3 mt-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">活動事項</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="item" aria-describedby="basic-addon3">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="add">新增</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col text-left ">
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#li">
+                    查看活動
+                </button>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="li" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-group mb-3">
+                                    <input id="lookyear" style="text-align:center;" type="text" class="form-control" placeholder="year" aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" value="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">年</span>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input id="lookmonth" style="text-align:center;" type="text" class="form-control" placeholder="month" aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" value="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">月</span>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input id="lookdate" style="text-align:center;" type="text" class="form-control" placeholder="date" aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" value="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">日</span>
+                                    </div>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">輸入地址</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="lookaddress" aria-describedby="basic-addon3">
+                                </div>
+
+
+                                <form action="/action_page.php">
+                                    選擇顏色
+                                    <input type="color" name="favcolor" value="#ff0000" id="lookcolor">
+                                </form>
+
+                                <div class="input-group mb-3 mt-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">活動事項</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="lookitem" aria-describedby="basic-addon3">
+                                </div>
+
+                                <div id="map" class="mapstyle">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="clear">刪除</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row text-center">
+            <div class="col text-center ">
+                <div class="lightgrey body-list">
+                    <ul id="dayofweek">
+                        <li>SUN</li>
+                        <li>MON</li>
+                        <li>TUE</li>
+                        <li>WED</li>
+                        <li>THU</li>
+                        <li>FRI</li>
+                        <li>SAT</li>
+
+                    </ul>
+
+                    <div class="darkgrey body-list">
+                        <ul id="days">
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row ">
+            <div class="col ">
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByUP0vgLcOcthp97O5G31QzcObQeBYJeY" async defer></script>
+    <script type=text/javascript>
+        var olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //閏年
+        var normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];　 //平年
+        var months = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September",
+            "October",
+            "November", "December"
+        ]; //月份
+
+        var date = new Date();　　　　
+        var year = date.getFullYear(); //取得年份
+        var month = date.getMonth(); //取得月份
+        var day = date.getDate(); //取得日期
+        var week = date.getDay(); //星期幾
+
+        //月份第一天星期幾
+        function dayStart(y, m) {
+            var firstDay = new Date(y, m, 1);
+            return (firstDay.getDay());
+        }
+
+        function daylast(y, m) {
+            var lastDay = new Date(y, m + 1, 0);
+            return (lastDay.getDate());
+        }
+
+        function daylasts(y, m) {
+            var lastDay = new Date(y, m + 1, 0);
+            return (lastDay.getDay());
+        }
+
+        function monthlast(y, m) {
+            var lastmonth = new Date(y, 12, 0);
+            return (lastmonth.getDate());
+        }
+
+
+        //判斷閏年平年
+        function daysMonth(y, m) {
+            if (((y % 4) == 0) && ((y % 100) != 0) || ((y % 400) == 0)) {
+                return (olympic[m]);
+            } else {
+                return (normal[m]);
+            }
+        }
+
+        var days = document.getElementById("days");
+        var monthday = document.getElementById("month");
+        var years = document.getElementById("year");
+
+
+        function refreshDate() {
+
+            var str = "";
+            var totalDay = daysMonth(year, month); //月份總天數
+            var firstDays = dayStart(year, month); //月份第一天星期幾
+            var monthsDays = monthlast(year, month);
+            var lastDays = daylast(year, month);
+            var lastDayss = daylasts(year, month);
+
+            var li;
+            var k = monthsDays - firstDays + 1;
+            for (var i = 0; i < firstDays; i++) {
+                str += "<li class='lightgrey'> " + k + "</li>";
+                k++;
+            }
+
+
+            for (var i = 1; i <= totalDay; i++) {
+                if ((i < day && year == date.getFullYear() && month == date.getMonth()) || year <
+                    date.getFullYear() || (year == date.getFullYear() && month < date.getMonth())) {
+                    li = " class='lightgrey' ";
+                } else if (i == day && year == date.getFullYear() && month == date.getMonth()) {
+                    li = " class='green greenbox' ";
+                } else {
+                    li = " class='darkgrey' ";
+
+                }
+                str += "<li" + li + " id=" + year + (month + 1) + i + ">" + i + "</li>";
+
+                if (i == lastDays) {
+                    var k = 1;
+                    for (var j = lastDayss; j < 6; j++) {
+                        str += "<li class='lightgrey'> " + k + "</li>";
+                        k++;
+                    }
+                }
+            }
+
+            days.innerHTML = str;
+            years.innerHTML = year + " " + months[month];
+        }
+        refreshDate();
+
+
+
+        var btnPrev = document.getElementById("btnPrev");
+        btnPrev.onclick = function () {
+            month--;
+            if (month < 0) {
+                year--;
+                month = 11;
+            }
+            refreshDate();
+        }
+
+        var btnNext = document.getElementById("btnNext");
+        btnNext.onclick = function () {
+            month++;
+            if (month > 11) {
+                year++;
+                month = 0;
+            }
+            refreshDate();
+        }
+
+        var add = document.getElementById("add");
+        add.onclick = function () {
+            var list = {
+                data,
+                year,
+                month,
+                date,
+                address,
+                color,
+                items: null,
+            };
+            list.year = document.getElementById("inputyear").value;
+            list.month = document.getElementById("inputmonth").value;
+            list.date = document.getElementById("inputdate").value;
+            list.items = document.getElementById("item").value;
+            list.address = document.getElementById("address").value;
+            list.color = document.getElementById("color").value;
+
+            if (typeof (Storage) !== "undefined") {
+                var todaydate = new Date();
+                var data = todaydate.getFullYear().toString() + todaydate.getMonth().toString() + todaydate.getDate()
+                    .toString() + todaydate.getHours().toString() + todaydate.getMinutes().toString() +
+                    todaydate.getSeconds()
+                    .toString() + todaydate.getMilliseconds().toString();
+                list.data = data.toString();
+                localStorage[data] = JSON.stringify(list);
+            } else {
+                alert("Sorry, your browser does not support Web Storage...");
+            }
+        }
+
+
+        for (var check in localStorage) {
+            if (isNaN(check) == false) {
+                var item = JSON.parse(localStorage[check]);
+                var li = document.getElementById(item.year + item.month + item.date);
+                if (li.innerHTML.indexOf("ul") == -1) {
+                    li.innerHTML = item.date + "<ul id=li" + item.year + item.month + item.date + " class='d'>" +
+                        "</ul>";
+                }
+                var newli = document.createElement("li");
+                newli.innerText = item.items;
+                newli.style = "background-color:" + item.color;
+                newli.id = item.year + item.month + item.date;
+                var ulli = document.getElementById("li" + item.year + item.month + item.date);
+                ulli.appendChild(newli);
+            }
+        }
+
+        var allli = $('ul li ul li');
+        for (var lies of allli) {
+            lies.setAttribute("data-toggle", "modal");
+            lies.setAttribute("data-target", "#li");
+            lies.onclick = function (e) {
+                for (var item in localStorage) {
+                    if (item == "length") break;
+                    if (e.target.id == JSON.parse(localStorage[item]).year + JSON.parse(localStorage[item]).month +
+                        JSON.parse(localStorage[item]).date) {
+                        var parseItem = JSON.parse(localStorage[item]);
+                        document.getElementById("lookyear").value = parseItem.year;
+                        document.getElementById("lookmonth").value = parseItem.month;
+                        document.getElementById("lookdate").value = parseItem.date;
+                        document.getElementById("lookaddress").value = parseItem.address;
+                        document.getElementById("lookcolor").value = parseItem.color;
+                        document.getElementById("lookitem").value = parseItem.items;
+
+                        var add = parseItem.address;
+                        var geocoder = new google.maps.Geocoder();
+                        geocoder.geocode({
+                                "address": add
+                            },
+                            function (results, status) {
+                                if (status == google.maps.GeocoderStatus.OK) {
+                                    var location = results[0].geometry.location;
+                                    console.log(location);
+                                    
+                                    var loc = {
+                                        lat: null,
+                                        lng: null
+                                    };
+                                    loc.lat = location.lat();
+                                    loc.lng = location.lng();
+                                    map = new google.maps.Map(
+                                        document.getElementById('map'), {
+                                            center: loc,
+                                            zoom: 15
+                                        });
+                                    var marker = new google.maps.Marker({
+                                        position: loc,
+                                        center: loc,
+                                        map: map,
+                                        title: add
+                                    });
+                                }
+                            });
+                    }
+                }
+            }
+        }
+
+
+        var clear = document.getElementById("clear");
+        clear.onclick = function () {
+            localStorage.removeItem(item.data);
+        }
+    </script>
+
+</body>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</html>

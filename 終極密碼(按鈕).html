@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row text-center mt-3">
+            <div class="col">
+                <h3>終極密碼</h3>
+            </div>
+        </div>
+
+        <div class="row text-center mt-3">
+
+            <div class="col ">
+                <input type="text" class="form-control" name="" id="text" aria-describedby="helpId" placeholder="請輸入0~99的數字">
+            </div>
+            <div class="col ">
+                <input type="text" class="form-control" name="" id="tip" aria-describedby="helpId" placeholder="提示">
+            </div>
+        </div>
+
+        <div class="row text-center mt-5">
+            <div class="col text-right">
+                <button type="button" class="btn btn-primary">1</button>
+            </div>
+            <div class="col text-center">
+                <button type="button" class="btn btn-primary">2</button>
+            </div>
+            <div class="col text-left">
+                <button type="button" class="btn btn-primary">3</button>
+            </div>
+        </div>
+
+        <div class="row text-center mt-5">
+            <div class="col text-right">
+                <button type="button" class="btn btn-primary">4</button>
+            </div>
+            <div class="col text-center">
+                <button type="button" class="btn btn-primary">5</button>
+            </div>
+            <div class="col text-left">
+                <button type="button" class="btn btn-primary">6</button>
+            </div>
+        </div>
+        <div class="row text-center mt-5">
+            <div class="col text-right">
+                <button type="button" class="btn btn-primary">7</button>
+            </div>
+            <div class="col text-center">
+                <button type="button" class="btn btn-primary">8</button>
+            </div>
+            <div class="col text-left">
+                <button type="button" class="btn btn-primary">9</button>
+            </div>
+        </div>
+        <div class="row text-center mt-5">
+
+            <div class="col text-right">
+                <button type="button" class="btn btn-primary">0</button>
+            </div>
+            <div class="col text-center">
+                <button type="button" class="btn btn-danger" id="clear">x</button>
+            </div>
+            <div class="col text-left">
+                <button type="button" class="btn btn-success" id="input">-></button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var ans = Math.floor(Math.random() * 100);
+        console.log("答案是:" + ans);
+        var min = 0;
+        var max = 100;
+
+
+        var buttons = document.getElementsByTagName("button");
+        for (var i = 0; i < buttons.length; i++) {
+            var button = buttons[i];
+            button.onclick = function () {
+                var btn = event.srcElement;
+                document.getElementById("text").value += btn.innerText;
+            }
+        }
+
+
+        var clear = document.getElementById("clear");
+        clear.onclick = function () {
+            document.getElementById("text").value = "";
+        }
+
+        var i=5;
+        var input = document.getElementById("input");
+        input.onclick = function () {
+                var gus = document.getElementById("text").value;
+                 
+                 if(gus<100){
+                    
+                 if (ans > gus) {
+                    min = gus;
+                    document.getElementById("tip").value = (gus + "~" + max);
+                } else if (ans < gus) {
+                    max = gus;
+                    document.getElementById("tip").value = (min + "~" + gus);
+                } else {
+                    document.getElementById("tip").value = ("成功");
+
+                } 
+               
+                i--;
+                if (i == 0) {
+                    document.getElementById("tip").value = ("失敗");
+                    document.getElementById("input").onclick = false;
+                }
+                else{
+                     document.getElementById("tip").value =(min+"~"+max+"的數字:"+"(剩餘"+i+"次)"); 
+                }
+                 console.log(document.getElementById("tip").value);
+        }
+      }  
+      
+    </script>
+
+
+</body>
+
+</html>

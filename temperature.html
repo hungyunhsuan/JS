@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>temperature</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-3 text-right mt-5">
+
+                <strong>請選擇轉換方式 :</strong>
+            </div>
+
+            <div class="col-9 text-left mt-5">
+                <label>
+                    <input type="radio" checked="" name="optradio" id="unitCF">攝氏轉換為華氏</label>
+                <label>
+                    <input type="radio"  name="optradio" id="unitFC">華氏轉換為攝氏</label>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div class="container text-center ">
+            <div class="row ">
+                <div class="col-4  mb-2 mt-5">
+                 <button  id="1" type="button" class="btn btn-defult">1</button>
+                 <button id="1" type="button " class="btn btn-defult">2</button>
+                 <button  id="1"type="button" class="btn btn-defult">3</button>
+                </div>
+                <div class="col mt-5 ">
+                        <input type="text" class="form-control" id="txt" placeholder="請輸入溫度">
+                 </div>
+                 <div class="col mt-5">
+                        <button type="button" class="btn btn-primary" id="change" >轉換</button>
+                        <button type="button" class="btn btn-danger" id="cmdClean" >清除</button>
+                 </div>
+            </div> 
+            <div class="row ">
+                    <div class="col-4 mb-2">
+                     <button  id="1"type="button" class="btn btn-defult">4</button>
+                     <button  id="1"type="button " class="btn btn-defult">5</button>
+                     <button  id="1"type="button" class="btn btn-defult">6</button>
+                    </div>
+                   
+                            <div class="col mt-2">
+                             <input type="text" class="form-control" id="ans" placeholder="結果" readonly>
+                            </div>
+                        
+                </div>
+                <div class="row ">
+                        <div class="col-4 mb-2 ">
+                         <button id="1" type="button" class="btn btn-defult">7</button>
+                         <button  id="1"type="button " class="btn btn-defult">8</button>
+                         <button id="1"type="button" class="btn btn-defult">9</button>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                            <div class="col-4 ">
+                             <button  id="1"type="button" class="btn btn-defult">0</button>
+                             <button  id="1"type="button " class="btn btn-defult">.</button>
+                            </div>
+                        </div>
+        </div>
+
+        
+
+        
+
+
+
+    
+
+
+
+
+
+
+        <script>
+                var buttons=document.getElementsByTagName("button");
+                for(var i=0;i<buttons.length;i++){
+                   var button=buttons[i];
+                   var n=0;
+                   if(i==3)
+                   {
+                       var change= document.getElementById("change");
+                       change.onclick=function(){
+                           if(document.getElementById("unitCF").checked==true){
+                            document.getElementById("ans").value =((document.getElementById("txt").value*1.8)+32).toFixed(2);
+                           }
+                           else{
+                            document.getElementById("ans").value =((document.getElementById("txt").value-32)/1.8).toFixed(2);
+                           }
+                       }
+                   }
+                   else if(i==4)
+                   {
+                       
+                        var cmdClean=document.getElementById("cmdClean");
+                        cmdClean.onclick = function(){
+                            document.getElementById("txt").value=" ";
+                        }
+                   }
+                   else
+                   {
+                        button.onclick=function(){
+                        var btn =event.srcElement;
+                        document.getElementById("txt").value += btn.innerText; 
+                        }
+                   }
+
+                   var  optCF=document.getElementById("unitCF");
+                   var  optFC=document.getElementById("unitFC");
+                   console.log(optCF.chcked);
+                   console.log(optFC.chcked);
+
+                }
+
+               
+
+            
+            </script>
+</body>
+
+</html>

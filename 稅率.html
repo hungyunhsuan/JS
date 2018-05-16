@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Rate</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col text-center">
+                <h3>稅額試算</h3>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col text-right">
+                <h3>所得淨額</h3>
+            </div>
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">$</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="save">
+                </div>
+            </div>
+
+            <div class="col text-left">
+                <button type="button" class="btn btn-primary" id="btn">計算</button>
+            </div>
+
+        </div>
+
+        <div class="row mt-5">
+            <div class="col text-right">
+                <h3>稅率</h3>
+            </div>
+
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2" id="per">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col text-left">
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col text-right">
+                <h3>累進差額</h3>
+            </div>
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">$</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="mon">
+                </div>
+            </div>
+
+            <div class="col text-left">
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col text-right">
+                <h3>應納稅額</h3>
+            </div>
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">$</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="total">
+                </div>
+            </div>
+
+            <div class="col text-left">
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <script>
+          var rate = function (x) {
+          if (x < 540000) return  5;
+          if (x >= 540001 && x < 1210000) return 12;
+          if (x >= 1210001 && x < 2420000) return 20;
+          if (x >= 2420001 && x < 4530000) return 30;
+          if (x >= 4530001 && x < 10310000) return 40;
+          return 45;
+         }
+
+          var rate1 = function (x) {
+          if (x < 540000) return  0;
+          if (x >= 540001 && x < 1210000) return 37800;
+          if (x >= 1210001 && x < 2420000) return 134600;
+          if (x >= 2420001 && x < 4530000) return 376600;
+          if (x >= 4530001 && x < 10310000) return 829600;
+          return 1345100;
+        }
+        
+         var item= document.getElementById("btn");
+         item.onclick=function(){
+
+         var savings=document.getElementById("save").value;
+
+         function getRates(savings,rating){
+            var rate = rating(savings);
+            document.getElementById("per").value=rate;         
+      }
+         getRates(savings, rate);
+
+          function getRates1(savings,rating){
+            var rate1 = rating(savings);
+            document.getElementById("mon").value=rate1;         
+      }
+         getRates1(savings, rate1);
+
+
+
+         document.getElementById("total").value=Math.floor((document.getElementById("save").value)*((document.getElementById("per").value)/100)-(document.getElementById("mon").value));
+         }
+
+        </script>
+
+</body>
+
+</html>
