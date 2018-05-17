@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+        <div class="container">
+                <div class="row mt-5">
+                    <div class="col text-center">
+                        <h3>貸款</h3>
+                    </div>
+                </div>
+        
+                <div class="row mt-5">
+                    <div class="col text-right">
+                        <h3>本金</h3>
+                    </div>
+                    <div class="col text-center">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="save">
+                        </div>
+                    </div>
+        
+                    <div class="col text-left">
+                        <button type="button" class="btn btn-primary" id="btn">計算</button>
+                    </div>
+        
+                </div>
+        
+                <div class="row mt-5">
+                    <div class="col text-right">
+                        <h3>年利率</h3>
+                    </div>
+        
+                    <div class="col text-center">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2" id="per">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col text-left">
+                    </div>
+                </div>
+        
+                <div class="row mt-5">
+                    <div class="col text-right">
+                        <h3>貸款年期</h3>
+                    </div>
+                    <div class="col text-center">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="year">
+                        </div>
+                    </div>
+        
+                    <div class="col text-left">
+                    </div>
+                </div>
+
+                
+                <div class="row mt-5">
+                        <div class="col text-right">
+                            <h3>平均每月應攤付本息金額</h3>
+                        </div>
+                        <div class="col text-center">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="mon">
+                            </div>
+                        </div>
+            
+                        <div class="col text-left">
+                        </div>
+                    </div>
+          
+
+
+
+      <script>
+       var button=document.getElementById("btn");
+       button.onclick=function(){
+          /* var total=document.getElementById("save").value;
+           var month=(document.getElementById("per").value)/100/12;
+           var monday=(document.getElementById("year").value)*12;
+           var average= (Math.pow(1+month,monday)*month)/(Math.pow(1+month,monday)-1);
+           document.getElementById("mon").value=Math.round(total*average);*/
+
+
+           var LoanCalculator = function(yRate, yLoan, yAmount) {
+           var _mRate = yRate/100 / 12;
+           var _amount = yAmount;
+           var _mLoan = yLoan * 12;
+           var _aRate = ((Math.pow(1+_mRate, _mLoan)) * _mRate) / ((Math.pow(1+_mRate, _mLoan)) - 1);
+  
+           this.getMonthlyPayAmount = function() {
+           return Math.round(_amount * _aRate);
+           }
+        }
+
+           var total=document.getElementById("save").value;
+           var month=(document.getElementById("per").value);
+           var monday=(document.getElementById("year").value);
+
+           var calculator=new LoanCalculator(month,monday,total);
+           document.getElementById("mon").value=calculator.getMonthlyPayAmount();
+           
+       }
+
+
+      </script>
+      
+ 
+  </body>
+</html>

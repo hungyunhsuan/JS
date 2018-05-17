@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2" id="year">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">年</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2" id="month">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">月</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2" id="date">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">日</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <button type="button" class="btn btn-primary" id="btn">分析</button>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col">
+                <div id="name"></div>
+            </div>
+
+            <div class="col mt-3">
+                <div id="look"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./life.js">
+    </script>
+    <script>
+        $(function () {
+
+            $("#btn").click(function () {
+                var y = $("#year").val();
+                var m = $("#month").val();
+                var d = $("#date").val();
+
+                var cal = new NumerologyCalculator(y, m, d);
+                console.log(cal.getLifeNumerology());
+
+                $.ajax({
+                    url: "https://gist.githubusercontent.com/regionbbs/a4633c99d4f3d73c41538134b0b62162/raw/9b81dd8ae2bbe0b088d54c2118e5eb2d1021313f/" +
+                        cal.getAstrologyConstellationName() + ".json",
+                    type: "GET"
+                }).done(function (data) {
+                    var o = JSON.parse(data);
+                    $("#name").text(o.name);
+                    $("#look").text(o.lookup[cal.getLifeNumerology() - 1]);
+                });
+            });
+        })
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

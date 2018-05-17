@@ -1,0 +1,194 @@
+<html>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <div id="map" style="width: 60%; height: 700px"></div>
+            </div>
+            <div class="col-4">
+                <div id="direction" class="directionstyle" style="width:15%; "></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYr-pVf6Frs9ZXOhNSFJYzR3j8jrxXfjU"></script>
+    <script>
+        var map;
+        var marker = null;
+        var center = {
+            lat: 24.7571075,
+            lng: 120.952429
+        };
+        var routes = [];
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('direction'));
+
+        $(function () {
+
+            map = new google.maps.Map(
+                document.getElementById('map'), {
+                    center: center,
+                    zoom: 13
+                });
+
+            directionsDisplay.setMap(map);
+
+            map.addListener("click", function (e) {
+
+                var marker = new google.maps.Marker({
+                    position: e.latLng,
+                    map: map
+                });
+
+                routes.push({
+                    order: routes.length + 1,
+                    lat: e.latLng.lat(),
+                    lng: e.latLng.lng()
+                });
+
+                if (routes.length < 2) return;
+
+                console.log(routes);
+
+                var waypoints = [];
+
+                // create waypoints.
+                for (var route of routes) {
+                    waypoints.push({
+                        location: {
+                            lat: route.lat,
+                            lng: route.lng
+                        },
+                        stopover: true
+                    });
+                }
+
+                var start = {
+                    lat: routes[0].lat,
+                    lng: routes[0].lng
+                };
+                var end = {
+                    lat: routes[routes.length - 1].lat,
+                    lng: routes[routes.length - 1].lng
+                };
+
+                directionsService.route({
+                    origin: start,
+                    destination: end,
+                    waypoints: waypoints,
+                    optimizeWaypoints: true,
+                    travelMode: 'DRIVING'
+                }, function (response, status) {
+                    if (status === 'OK') {
+                        directionsDisplay.setDirections(response);
+                    }
+                });
+
+                //console.log(e.latLng.lat());
+                //console.log(e.latLng.lng());
+            });
+
+        });
+
+
+
+        var request = new XMLHttpRequest();
+        request.open("GET",
+            "http://opendata.hccg.gov.tw/dataset/39ee314b-7ce7-4265-a6b5-b57f42392da8/resource/6a3a5f61-5383-419d-a94c-df710071a51e/download/20180321131425502.json"
+        );
+        request.onload = function () {
+            var items = JSON.parse(this.responseText);
+            for (var item of items) {
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: parseFloat(item.緯度),
+                        lng: parseFloat(item.經度)
+                    },
+                    map: map,
+                    icon: "1522913214.ico",
+                    title: item.旅館名稱
+                });
+            }
+        }
+        request.send();
+
+
+        var request = new XMLHttpRequest();
+        var geocodingAPIRequest = new XMLHttpRequest();
+        request.onload = function () {
+            var items = JSON.parse(this.responseText);
+
+            for (var item of items) {
+                var address = item.地址;
+                var title = item.景點名稱;
+                if (address === '')
+                    continue;
+
+                geocodingAPIRequest.open('GET', 'https://maps.googleapis.com/maps/api/geocode/json?address=' +
+                    address + '&key=AIzaSyAYr-pVf6Frs9ZXOhNSFJYzR3j8jrxXfjU', false);
+                geocodingAPIRequest.send();
+
+                var result = JSON.parse(geocodingAPIRequest.responseText);
+                console.log(result);
+
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: result.results[0].geometry.location.lat,
+                        lng: result.results[0].geometry.location.lng
+                    },
+                    map: map,
+                    icon: "1522913663.ico",
+                    title: title
+                });
+
+
+            }
+        };
+        request.open('GET',
+            "http://opendata.hccg.gov.tw/dataset/07caf18a-a966-4409-810a-ce3fdb7447b7/resource/3bca2d3b-177c-4e4a-9576-4a3ed8c81612/download/20180307114843661.json"
+        );
+        request.send();
+
+
+        var request = new XMLHttpRequest();
+        var geocodingAPIRequest = new XMLHttpRequest();
+        request.open('GET',
+            "http://opendata.hccg.gov.tw/dataset/4e722575-66a2-4af9-b1ff-95c2469331d1/resource/e17629a6-f7fb-4895-9d91-9d8e37d79eae/download/20180307103221255.json"
+        );
+        request.onload = function () {
+            var items = JSON.parse(this.responseText);
+
+            for (var item of items) {
+                var address = item.地址;
+                var title = item.店家名稱;
+                if (address === "")
+                    continue;
+                geocodingAPIRequest.open('GET', 'https://maps.googleapis.com/maps/api/geocode/json?address=' +
+                title + '&key=AIzaSyAYr-pVf6Frs9ZXOhNSFJYzR3j8jrxXfjU', false);
+                geocodingAPIRequest.send();
+
+                var result = JSON.parse(geocodingAPIRequest.responseText);
+                console.log(result.status);
+                if (result.status === "OK") {
+                    var marker = new google.maps.Marker({
+                        position: {
+                            lat: result.results[0].geometry.location.lat,
+                            lng: result.results[0].geometry.location.lng
+                        },
+                        map: map,
+                        icon: "1522932747.ico",
+                        title: title
+                    });
+                }
+            }
+        };
+        request.send();
+    </script>
+</body>
+
+</html>
