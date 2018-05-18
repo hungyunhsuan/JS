@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>WORKS</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: 微軟正黑體;
+        }
+
+        .sidenav a {
+            padding: 15px 8px 15px 8px;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .sidenav a:hover {
+            color: lightgrey;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            top: 56px;
+            left: 0;
+            background-color: cornsilk;
+            padding-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">作品集</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">履歷
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">github</a>
+                            </li>
+                           
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+        <div class="row ">
+            <div class="col-3">
+                <div class="sidenav">
+                    <a href="#" id = "test">打地鼠</a>   
+                    <a href="#" id="calendar">行事曆</a>
+                    <a href="#"id="ab">1A2B猜數字</a>
+                    <a href="#" id="password">終極密碼</a>
+                    <a href="#" id="tem">溫度轉換</a>
+                    <a href="#" id="rex">累進稅率</a>
+                    <a href="#" id="loan">貸款計算</a>
+                    <a href="#" id="traffic">預估交通費用</a>
+                    <a href="#" id="life">生命靈數</a>
+                    <a href="#" id="trello">trello刻板</a>
+                    
+                </div>
+            </div>
+            <div class="col-9">
+                <div id="part"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        $("#test").on("click",function(){
+            $("#part").html("<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src=\"https://1a2b.azurewebsites.net/mole/mole.html\" height=\"800\" width=\"100%\"></iframe>")
+        });
+        $("#calendar").on("click",function(){
+            $("#part").html("<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src=\"https://1a2b.azurewebsites.net/Calendar.html\" height=\"800\" width=\"100%\"></iframe>")
+        });
+        $("#ab").on("click",function(){
+            $("#part").html("<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src=\"https://1a2b.azurewebsites.net/1A2B.html\" height=\"800\" width=\"100%\"></iframe>")
+        });
+        $("#password").on("click",function(){
+            $("#part").html("<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src=\"https://1a2b.azurewebsites.net/password.html\" height=\"800\" width=\"100%\"></iframe>")
+        });
+        $("#tem").on("click",function(){
+            $("#part").html("<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src=\"https://1a2b.azurewebsites.net/temperature.html\" height=\"800\" width=\"100%\"></iframe>")
+        });
+        $("#rex").on("click",function(){
+            $("#part").html("<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src=\"https://1a2b.azurewebsites.net/rex.html\" height=\"800\" width=\"100%\"></iframe>")
+        });
+        $("#loan").on("click",function(){
+            $("#part").html("<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src=\"https://1a2b.azurewebsites.net/loan.html\" height=\"800\" width=\"100%\"></iframe>")
+        });
+        $("#traffic").on("click",function(){
+            $("#part").html("<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src=\"https://1a2b.azurewebsites.net/taffic.html\" height=\"800\" width=\"100%\"></iframe>")
+        });
+        $("#life").on("click",function(){
+            $("#part").html("<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src=\"https://1a2b.azurewebsites.net/life/life.html\" height=\"800\" width=\"100%\"></iframe>")
+        });
+        $("#trello").on("click",function(){
+            $("#part").html("<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src=\"https://trellobootstap.azurewebsites.net/trello.html\" height=\"800\" width=\"100%\"></iframe>")
+        });
+
+    </script>
+</body>
+
+</html>
