@@ -17,7 +17,26 @@
  * 將地址轉換為經緯度 , 透過Google Api找到對應位置顯示在地圖上
  * https://1a2b.azurewebsites.net/Calendar.html
 
-![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/calendar.PNG?raw=true)
+![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/calendar.PNG?raw=true) 
+
+# **#loan**
+ * 將計算功能寫在functio內帶參數 , 設計簡易貸款計算 
+ * https://1a2b.azurewebsites.net/loan.html
+
+![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/loan.PNG?raw=true)
+
+# **#終極密碼** 
+ * 將解答用console.log隱藏 , 判斷猜的數字.答案與亂數介於哪個區間
+ * https://1a2b.azurewebsites.net/password.html
+
+![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/password.PNG?raw=true)
+
+# **#tax** 
+ * 將金額區間寫在function內 , 輸入金額回傳累進差額進而進行計算 
+ * https://1a2b.azurewebsites.net/rex.html
+![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/rex.PNG?raw=true)
+
+
 
 
 
