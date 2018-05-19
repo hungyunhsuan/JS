@@ -44,6 +44,6 @@
 # **#預估交通費用**
  * 使用google api在地圖上點選兩個地點,依不同的交通工具計算交通費用
  * 參考資料 (旅行模式):https://developers.google.com/maps/documentation/javascript/directions?hl=zh-tw
- *https://1a2b.azurewebsites.net/taffic.html
+ * https://1a2b.azurewebsites.net/taffic.html
 ![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/traffic.PNG?raw=true)
 
