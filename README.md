@@ -36,3 +36,14 @@
  * https://1a2b.azurewebsites.net/rex.html
 ![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/rex.PNG?raw=true)
 
+# **#生命靈數** 
+ * 使用ajax向伺服器傳送並取回必須的資料，在用JavaScript處理來自伺服器的回應
+ * https://1a2b.azurewebsites.net/life/life.html
+![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/life.PNG?raw=true)
+
+# **#預估交通費用**
+ * 使用google api在地圖上點選兩個地點,依不同的交通工具計算交通費用
+ * 參考資料 (旅行模式):https://developers.google.com/maps/documentation/javascript/directions?hl=zh-tw
+ *https://1a2b.azurewebsites.net/taffic.html
+![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/traffic.PNG?raw=true)
+
