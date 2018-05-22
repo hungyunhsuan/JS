@@ -19,7 +19,7 @@
 
 ![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/calendar.PNG?raw=true) 
 
-# **#loan**
+# **#Loan**
  * 將計算功能寫在function內帶參數 , 設計簡易貸款計算 
  * https://1a2b.azurewebsites.net/loan.html
 
@@ -31,7 +31,7 @@
 
 ![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/password.PNG?raw=true)
 
-# **#tax** 
+# **#Tax** 
  * 將金額區間寫在function內 , 輸入金額回傳累進差額進而進行計算 
  * https://1a2b.azurewebsites.net/rex.html
 ![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/rex.PNG?raw=true)
