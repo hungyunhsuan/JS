@@ -7,7 +7,7 @@
 ![mole image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/mole.PNG?raw=true)
 
  # **#1A2B**
- * Math.random產生亂數 , 使用迴圈判斷位置與數字是否相同
+ * Math.random產生亂數 , 判斷位置與數字是否相同
  * https://1a2b.azurewebsites.net/1A2B.html
 
 ![1a2b image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/1A2B.PNG?raw=true)
@@ -20,7 +20,7 @@
 ![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/calendar.PNG?raw=true) 
 
 # **#loan**
- * 將計算功能寫在functio內帶參數 , 設計簡易貸款計算 
+ * 將計算功能寫在function內帶參數 , 設計簡易貸款計算 
  * https://1a2b.azurewebsites.net/loan.html
 
 ![calendar image](https://github.com/hungyunhsuan/JS/blob/master/readmeimage/loan.PNG?raw=true)
